@@ -8,8 +8,6 @@ const API_URL = "http://www.omdbapi.com?apikey=a6370745"
 
 
 
-
-
 const Details = () => {
 
     const [singleMovie, setSingleMovie] = useState({})
@@ -23,6 +21,7 @@ const Details = () => {
                 const response = await fetch(`${API_URL}&t=${title}`);
                 if (response.ok) {
                     const movieData = await response.json();
+                    console.log(movieData)
                     setSingleMovie(movieData);
                 } else {
                     console.error(`Error fetching movie data for "${title}"`);
@@ -40,7 +39,7 @@ const Details = () => {
     
   return (
     <div>
-      <MovieDetails title={title}  singleMovie={singleMovie} />
+      <MovieDetails singleMovie={singleMovie} />
     </div>
   )
 }
